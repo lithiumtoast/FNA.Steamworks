@@ -1752,6 +1752,11 @@ namespace Microsoft.Xna.Framework.Net
 			if (!bIOFailure && lobby.m_eResult == EResult.k_EResultOK)
 			{
 				activeAction.Lobby = new CSteamID(lobby.m_ulSteamIDLobby);
+				SteamMatchmaking.SetLobbyData(
+					activeAction.Lobby,
+					"SessionPropertiesCount",
+					activeAction.SessionProperties.Count.ToString()
+				);
 				for (int i = 0; i < activeAction.SessionProperties.Count; i += 1)
 				{
 					SteamMatchmaking.SetLobbyData(
@@ -1808,7 +1813,12 @@ namespace Microsoft.Xna.Framework.Net
 				// Just pick the first one, whatevs -flibit
 				for (int i = 0; i < activeAction.Lobbies.Length; i += 1)
 				{
-					activeAction.Lobbies[i] = SteamMatchmaking.GetLobbyByIndex(i);
+					var l = activeAction.Lobbies[i] = SteamMatchmaking.GetLobbyByIndex(i);
+					var sessionPropertiesCount = int.Parse(SteamMatchmaking.GetLobbyData(l, "SessionPropertiesCount"));
+					for (int j = 0; j < sessionPropertiesCount; j += 1)
+					{
+						activeAction.SessionProperties[j] = int.Parse(SteamMatchmaking.GetLobbyData(l, i.ToString()));
+					}
 				}
 			}
 			activeAction.IsCompleted = true;
