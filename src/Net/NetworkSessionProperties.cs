@@ -8,6 +8,8 @@
 #endregion
 
 #region Using Statements
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 #endregion
@@ -30,6 +32,10 @@ namespace Microsoft.Xna.Framework.Net
 		{
 			get
 			{
+				if (index >= properties.Count)
+				{
+					return null;
+				}
 				return properties[index];
 			}
 			set

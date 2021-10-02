@@ -1530,9 +1530,16 @@ namespace Microsoft.Xna.Framework.Net
 				}
 			}
 
+			var sessionPropertiesCount = int.Parse(SteamMatchmaking.GetLobbyData(actionLobby, "SessionPropertiesCount"));
+			var sessionProperties = new NetworkSessionProperties();
+			for (int i = 0; i < sessionPropertiesCount; i += 1)
+			{
+				sessionProperties[i] = int.Parse(SteamMatchmaking.GetLobbyData(actionLobby, i.ToString()));
+			}
+
 			activeSession = new NetworkSession(
 				actionLobby,
-				null, // FIXME
+				sessionProperties,
 				NetworkSessionType.PlayerMatch, // FIXME
 				MaxSupportedGamers, // FIXME
 				4, // FIXME
