@@ -1817,7 +1817,7 @@ namespace Microsoft.Xna.Framework.Net
 					var sessionPropertiesCount = int.Parse(SteamMatchmaking.GetLobbyData(l, "SessionPropertiesCount"));
 					for (int j = 0; j < sessionPropertiesCount; j += 1)
 					{
-						activeAction.SessionProperties[j] = int.Parse(SteamMatchmaking.GetLobbyData(l, i.ToString()));
+						activeAction.SessionProperties[j] = int.Parse(SteamMatchmaking.GetLobbyData(l, j.ToString()));
 					}
 				}
 			}
