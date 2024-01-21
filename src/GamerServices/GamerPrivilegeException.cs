@@ -37,6 +37,7 @@ namespace Microsoft.Xna.Framework.GamerServices
 
 		#region Protected Constructor
 
+		[Obsolete("Obsolete")]
 		protected GamerPrivilegeException(
 			SerializationInfo info,
 			StreamingContext context

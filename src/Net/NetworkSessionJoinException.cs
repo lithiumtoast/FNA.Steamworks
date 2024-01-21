@@ -55,6 +55,7 @@ namespace Microsoft.Xna.Framework.Net
 
 		#region Protected Constructor
 
+		[Obsolete("Obsolete")]
 		protected NetworkSessionJoinException(
 			SerializationInfo info,
 			StreamingContext context

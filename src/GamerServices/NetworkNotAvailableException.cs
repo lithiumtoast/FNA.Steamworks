@@ -36,6 +36,7 @@ namespace Microsoft.Xna.Framework.GamerServices
 
 		#region Protected Constructor
 
+		[Obsolete("Obsolete")]
 		protected NetworkNotAvailableException(
 			SerializationInfo info,
 			StreamingContext context
